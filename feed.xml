@@ -7,409 +7,6 @@
 		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Tagity tag</title>
-				<description>&lt;p&gt;&amp;lt;banner photo&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;Intro:&lt;/p&gt;
-
-&lt;p&gt;I was looking for a project that would both get my kids involved in electronics and actually be useful for them. At the same time, I wanted to make TV content more accessible: it’s all too easy for kids (and adults) to fall into the endless loop of short, addictive YouTube videos instead of enjoying a thoughtful episode of a TV series.&lt;/p&gt;
-
-&lt;p&gt;To make things trickier, a lot of the content they like is spread across different streaming services, or tucked away on my Plex server which can be confusing for kids to navigate on their own.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The solution:&lt;/strong&gt; build an NFC tag scanner that plays shows or movies when you tap a credit-card–sized “Movie Card.”&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image7.png&quot; style=&quot;width:3.16369in;height:4.20331in&quot; /&gt; (+ demo video, the one with the scanner on the wall)&lt;/p&gt;
-
-&lt;p&gt;The scanner is connected to my &lt;a href=&quot;https://www.home-assistant.io/&quot;&gt;&lt;u&gt;Home Assistant&lt;/u&gt;&lt;/a&gt; smart home using &lt;a href=&quot;https://esphome.io/index.html&quot;&gt;&lt;u&gt;ESPHome&lt;/u&gt;&lt;/a&gt; - a framework that greatly simplifies creating custom smart devices.&lt;/p&gt;
-
-&lt;p&gt;The scanner runs on &lt;a href=&quot;https://esphome.io/&quot;&gt;&lt;u&gt;ESPHome&lt;/u&gt;&lt;/a&gt; - a framework that makes creating custom smart devices surprisingly simple, and connects to my &lt;a href=&quot;https://www.home-assistant.io/&quot;&gt;&lt;u&gt;Home Assistant&lt;/u&gt;&lt;/a&gt; setup. With my kids’ help, we created over 50 cards covering all their favorite shows and movies, and the collection keeps growing. It was such a hit that I built a second scanner for another room. To make it blend in, I designed and 3D-printed a small enclosure that matches the décor while keeping the scanner kid-friendly and accessible.&lt;/p&gt;
-
-&lt;p&gt;———— META: Structure of post&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Building the electronics&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;Inspiration - inspired from several similar projects I found online (notably &lt;a href=&quot;https://simplyexplained.com/blog/how-i-built-an-nfc-movie-library-for-my-kids/&quot;&gt;&lt;u&gt;this one&lt;/u&gt;&lt;/a&gt;).&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;Schematics&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;Soldering everything together&lt;/p&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Smart home integration&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;ESPHome yaml&lt;/p&gt;
-
-        &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;ESPHome’s built-in &lt;a href=&quot;https://esphome.io/components/binary_sensor/pn532/&quot;&gt;&lt;u&gt;pn532_i2c component&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;ESPHome getting started &lt;a href=&quot;https://www.youtube.com/watch?v=cfkW7ZmiMEw&amp;amp;t=759s&quot;&gt;&lt;u&gt;youtube&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;Using ESPHome directly using web page (&lt;a href=&quot;https://community.home-assistant.io/t/create-a-stand-alone-device/810756/22&quot;&gt;&lt;u&gt;link&lt;/u&gt;&lt;/a&gt;)&lt;/p&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;Home assistant automation&lt;/p&gt;
-
-        &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;Deep links&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;Random episode on Plex - useful for shows they watched all the episodes of.&lt;/p&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Creating the content cards&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;Taking TV/Movie art from &lt;a href=&quot;https://fanart.tv/&quot;&gt;&lt;u&gt;https://fanart.tv/&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;Copy the art to Google Doc and resize to dimensions that will fit the card&lt;/p&gt;
-
-        &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;Width: 2.12 inch&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;Height: 3.36 inch&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;(Ratio: 1.58333333 )&lt;/p&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;Print and laminate using a lamination machine&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;(include pics of my daughter emma working on the cards)&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;Onboard the card to the HA automation&lt;/p&gt;
-
-        &lt;ul&gt;
-          &lt;li&gt;Either use the HA tag scanning tool to get the card it, or add to the automation a line that prints the card id if it didn’t match any of the deep links.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;3D printing the enclosure - created a logo using ChatGPT and importing into an existing design I found.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;(Share a remix with the logo added to the lid)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Showing how everything works&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Closing thoughts&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;———— END OF META: Structure of post&lt;/p&gt;
-
-&lt;h2 id=&quot;building-the-electronics&quot;&gt;Building the electronics&lt;/h2&gt;
-
-&lt;p&gt;The circuit is straightforward: connect an NFC reader module (PN532) to a microcontroller (ESP8266 WeMos D1 mini).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image9.png&quot; style=&quot;width:6.51in;height:5.23952in&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;There are two ways to hook up the PN532: &lt;strong&gt;I²C&lt;/strong&gt; or &lt;strong&gt;SPI&lt;/strong&gt;. I went with I²C because it’s simpler - requires just 2 two data wires. For a tag scanner, throughput is minimal, so SPI’s extra speed doesn’t add any benefit. What it does add is more wiring (The MOSI, MISO, SCK and CS pins, also visible on the diagram above), which makes things unnecessarily messy.&lt;/p&gt;
-
-&lt;p&gt;One critical step: &lt;strong&gt;set the PN532’s mode correctly&lt;/strong&gt;. The board has tiny DIP switches (or sometimes solder pads) to toggle between I²C and SPI. Make sure these match your chosen mode—otherwise you’ll be staring at a non-responsive scanner and wondering why nothing works. Let’s just say I learned that lesson the hard way 😅.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image10.png&quot; style=&quot;width:5.41875in;height:7.20156in&quot; /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Once the jumpers were set, I wired the SDA and SCL pins from the PN532, to the Wemos D1 mini. You can map I²C lines to almost any pins; I chose &lt;strong&gt;D8&lt;/strong&gt; (for SDA) and &lt;strong&gt;D7&lt;/strong&gt; (for SCL). These need to match what we’ll later declare in the ESPHome config:&lt;/p&gt;
-
-&lt;p&gt;i2c:&lt;/p&gt;
-
-&lt;p&gt;sda: D8&lt;/p&gt;
-
-&lt;p&gt;scl: D7&lt;/p&gt;
-
-&lt;p&gt;pn532_i2c:&lt;/p&gt;
-
-&lt;p&gt;id: nfc_reader&lt;/p&gt;
-
-&lt;p&gt;After confirming the wiring, I soldered everything together. A pair of &lt;em&gt;helping hands&lt;/em&gt; was invaluable here - keeping the boards aligned so I could stack them neatly and compactly. That’s important, since they need to fit snugly inside the enclosure, as we’ll see later.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image11.jpg&quot; style=&quot;width:16.0625in;height:21.33333in&quot; /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;With the hardware stacked and soldered, it was ready for the fun part - bringing it to life through ESPHome and tying it into Home Assistant, where we’ll write an automation to make the scanner react to different cards.&lt;/p&gt;
-
-&lt;h2 id=&quot;smart-home-integration&quot;&gt;Smart Home Integration&lt;/h2&gt;
-
-&lt;p&gt;With the hardware stacked and soldered, it was ready for the fun part—bringing it to life through ESPHome and tying it into Home Assistant, where we’ll write an automation to make the scanner react to different cards.&lt;/p&gt;
-
-&lt;h3 id=&quot;esphome-config-basics&quot;&gt;ESPHome Config Basics&lt;/h3&gt;
-
-&lt;p&gt;The scanner runs on &lt;a href=&quot;https://esphome.io/&quot;&gt;&lt;u&gt;ESPHome&lt;/u&gt;&lt;/a&gt;, which makes connecting hardware like the PN532 reader almost trivial. Instead of writing firmware, you just declare the pins and components in YAML, and ESPHome takes care of the rest.&lt;/p&gt;
-
-&lt;p&gt;——————–&lt;/p&gt;
-
-&lt;p&gt;esphome:&lt;/p&gt;
-
-&lt;p&gt;name: tagitytag_scanner&lt;/p&gt;
-
-&lt;p&gt;platform: ESP8266&lt;/p&gt;
-
-&lt;p&gt;board: d1_mini&lt;/p&gt;
-
-&lt;p&gt;i2c:&lt;/p&gt;
-
-&lt;p&gt;sda: D8&lt;/p&gt;
-
-&lt;p&gt;scl: D7&lt;/p&gt;
-
-&lt;p&gt;scan: true # optional, helps confirm wiring&lt;/p&gt;
-
-&lt;p&gt;pn532_i2c:&lt;/p&gt;
-
-&lt;p&gt;id: nfc_reader&lt;/p&gt;
-
-&lt;p&gt;——————–&lt;/p&gt;
-
-&lt;p&gt;“Installing” this config on our microcontroller involves connecting it to the computer and using 2 web tools that do everything. The first tool, ESPHome Builder, parses the yaml config and generates the firmware based on the info on that config. The second tool, &lt;a href=&quot;https://web.esphome.io/?dashboard_wizard&quot;&gt;&lt;u&gt;ESPHome Web&lt;/u&gt;&lt;/a&gt;, connects to your device via USB cable and flashes the firmware onto it. There are plenty of good instructions for the process, such as &lt;a href=&quot;https://www.youtube.com/watch?v=cfkW7ZmiMEw&amp;amp;t=759s&quot;&gt;&lt;u&gt;this youtube video&lt;/u&gt;&lt;/a&gt; or the &lt;a href=&quot;https://esphome.io/guides/getting_started_hassio/&quot;&gt;&lt;u&gt;official ESPHome instructions&lt;/u&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;from-esphome--home-assistant&quot;&gt;From ESPHome → Home Assistant&lt;/h3&gt;
-
-&lt;p&gt;Once the firmware is loaded onto the Wemos D1 mini, Home Assistant automatically detects the device and prompts you to add it as an integration.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(Insert screenshot of the device in HA’s integrations page)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;From there, the scanner can report any NFC tags it detects. Home Assistant has an Event Listening feature under Developer Tools, a quick scan of any card, while listening to “tag_scanned” events, will show some useful data for the card and the tag scanner. &lt;em&gt;tag_id&lt;/em&gt; is the card’s unique ID and &lt;em&gt;device_id&lt;/em&gt; is the tag scanner’s unique ID.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image3.png&quot; style=&quot;width:21.33333in;height:17.13542in&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We &lt;em&gt;could&lt;/em&gt; write data onto the cards, but we won’t do that here. There’s no need to complicate the process of adding new cards, since each card already has a permanent unique identifier. We’ll design an automation that maps each card’s Tag ID to the content we need to play.&lt;/p&gt;
-
-&lt;h3 id=&quot;writing-the-automation&quot;&gt;Writing the Automation&lt;/h3&gt;
-
-&lt;p&gt;There are a few ways to set up the automation. I liked the structure Xavier at &lt;a href=&quot;https://simplyexplained.com/blog/how-i-built-an-nfc-movie-library-for-my-kids/&quot;&gt;&lt;em&gt;&lt;u&gt;Simply Explained&lt;/u&gt;&lt;/em&gt;&lt;/a&gt; shared, it keeps the mapping of Tag IDs to content easy to read and update.&lt;/p&gt;
-
-&lt;p&gt;I made a few changes of my own:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Support for multiple scanners (so different rooms can have their own devices).&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Some tweaks to handle different types of content (Plex, Netflix, etc.).&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Here’s how it works.&lt;/p&gt;
-
-&lt;p&gt;First, the trigger is a &lt;em&gt;tag_scanned&lt;/em&gt; event, the same one we saw earlier when testing the scanner with the Developer Tools. The automation will be triggered when such an event is fired.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image2.png&quot; style=&quot;width:21.33333in;height:8.34375in&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We’ll define all the difference variables the automation uses:&lt;br /&gt;
-SCANNER_MAPPING - A simple mapping between Scanner IDs to the TV entity they should operate on. We can get the Scanner ID using the Event Listener tool we saw earlier.&lt;br /&gt;
-TARGET_TV - This variable resolves to the TV entity the automation targets, based on the Scanner ID that was provided by the &lt;em&gt;tag_scanned&lt;/em&gt; event (i.e. trigger.event.data.device_id). In this case, it defaults to the Living Room TV if the scanner is not listed in the mapping.&lt;br /&gt;
-CARD_MAPPING - Maps each card’s Tag ID to the content it should play.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image8.png&quot; style=&quot;width:21.33333in;height:14in&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Each card mapping includes the Tag ID, a name (just for readability) and the Content ID. The automation supports a few content types, for several streaming services and Plex. We’ll see below how we deep link to open the content.&lt;/p&gt;
-
-&lt;p&gt;Next, we’ll prepare the TV by turning it on, if it’s not already.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image1.png&quot; style=&quot;width:21.33333in;height:14.60417in&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;And now we’ll handle each content type by generating a different Deep Link URL, based on the service we need to start the playback on. In this example, we’re handling Netflix content by taking the card’s content ID using the CARD_MAPPING, and plugging that into Netflix’s Deep Link URL. This URL works on an Apple TV, which is what I have connected to my TVs, other streaming devices might require other ways to open a specific content on a specific streaming service.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image4.png&quot; style=&quot;width:21.33333in;height:19.73958in&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;&amp;lt; Can i add a collapsable code viewer? &amp;gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;lt;link to gist&amp;gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;deep-linking-to-content&quot;&gt;Deep Linking to Content&lt;/h3&gt;
-
-&lt;p&gt;For streaming services like Netflix or Disney+, we can use deep links to jump straight into the right show or movie on the Apple TV. Here’s a list of deep links I use for various streaming services and support in my automation:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Disney+: &lt;a href=&quot;https://www.disneyplus.com/en-gb/play/&quot;&gt;&lt;u&gt;https://www.disneyplus.com/en-gb/play/&lt;/u&gt;&lt;/a&gt;&amp;lt;Content ID&amp;gt;&lt;/p&gt;
-
-  &lt;p&gt;Netflix: https://www.netflix.com/watch/&amp;lt;Content ID&amp;gt;&lt;/p&gt;
-
-  &lt;p&gt;Hulu: hulu://watch/&amp;lt;Content ID&amp;gt;&lt;/p&gt;
-
-  &lt;p&gt;Plex Movie/TV Show: plex://play/?metadataKey=%2Flibrary%2Fmetadata%2F&amp;lt;Content ID&amp;gt;&amp;amp;server=&amp;lt;Plex server ID&amp;gt;&lt;/p&gt;
-
-  &lt;p&gt;Plex Playlist: plex://play/?metadataKey=%2Fplaylists%2F&amp;lt;Content ID&amp;gt;&amp;amp;server=&amp;lt;Plex server ID&amp;gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&amp;lt; make a table &amp;gt;&lt;/p&gt;
-
-&lt;p&gt;The Content ID can be retrieved by opening the content on your browser and checking the URL.&lt;/p&gt;
-
-&lt;p&gt;Tip: Using a Plex playlist is a great way to watch random episodes of some TV Show(s), perfect for shows the kids have already watched a hundred times. &lt;a href=&quot;https://forums.plex.tv/t/tip-how-to-create-an-autoplaylist-with-random-sort/472823&quot;&gt;&lt;u&gt;Instructions on how to do that&lt;/u&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;And here’s the automation in action:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(Insert demo video of scanning Bluey card → show starts playing)&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;creating-the-content-cards&quot;&gt;Creating the Content Cards&lt;/h2&gt;
-
-&lt;p&gt;The electronics and automations are only half the story — the real magic (and the part my kids loved most) was creating the &lt;strong&gt;Movie Cards&lt;/strong&gt; themselves.&lt;/p&gt;
-
-&lt;p&gt;We used &lt;a href=&quot;https://fanart.tv/&quot;&gt;&lt;u&gt;fanart.tv&lt;/u&gt;&lt;/a&gt; as our main source for high-quality TV and movie artwork. It has a huge collection of posters, logos, and backgrounds that work perfectly for this kind of project.&lt;/p&gt;
-
-&lt;p&gt;Once we picked the right art, we copied it into a Google Doc and resized it to the dimensions of a credit card (Tip: resize to Width 2.12 inch, Height: 3.36 inch, Ratio: 1.583333).&lt;/p&gt;
-
-&lt;p&gt;This keeps the aspect ratio consistent so the art doesn’t look stretched or squashed when printed.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image6.png&quot; style=&quot;width:21.33333in;height:9.90625in&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image12.png&quot; style=&quot;width:21.33333in;height:7.96875in&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(Insert photos of resizing in Google Docs)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;After resizing, we printed the sheets and ran them through a laminating machine. The laminate not only makes the cards sturdy enough for repeated use, but also gives them that satisfying “real card” feel.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(Insert photos of Emma working on the cards)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image14.jpg&quot; style=&quot;width:16.0625in;height:21.33333in&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;onboarding-a-new-card&quot;&gt;Onboarding a New Card&lt;/h3&gt;
-
-&lt;p&gt;Once the physical card is ready, the final step is onboarding it into Home Assistant. To make things easier, I’ve added to the automation a fallback in case we scan a card that’s not assigned to any content, which prints the card UID to Home Assistant’s Logbook.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image5.png&quot; style=&quot;width:21.33333in;height:19.90625in&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-15-Tagity-tag/media/image13.png&quot; style=&quot;width:21.33333in;height:1.40625in&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This makes it super easy to grow the collection - every time we want to add a new Movie Card, we just pick art, laminate, scan once, and drop the Card’s UID into the automation with the content we want to play.&lt;/p&gt;
-
-&lt;h2 id=&quot;3d-printing-the-enclosure&quot;&gt;3D Printing the Enclosure&lt;/h2&gt;
-
-&lt;p&gt;With the electronics and cards ready, the last step was giving the scanner a proper home. I wanted it to be both accessible for the kids and subtle enough to blend into the room’s décor.&lt;/p&gt;
-
-&lt;p&gt;Instead of designing something from scratch, I started with an existing enclosure I found online and modified it. To personalize it, I asked ChatGPT to create a simple logo for the project, then imported that into the 3D model’s lid. The result was a clean, kid-friendly enclosure with a custom logo that makes it feel like a finished product.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(Insert render/screenshot of the enclosure with logo)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I printed the design on my Bambu Lab printer, using standard PLA and 3 walls for sturdiness. The compact stack of the PN532 and Wemos D1 mini fit snugly inside, with just enough room for the wires and solder joints.&lt;/p&gt;
-
-&lt;p&gt;I’ve shared my remix of the design on MakerWorld, so if you’d like to build your own, you can download it here.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(Insert photo of the finished scanner mounted in the room)&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;bringing-it-all-together&quot;&gt;Bringing It All Together&lt;/h2&gt;
-
-&lt;p&gt;With the hardware soldered, the enclosure printed, the Movie Cards laminated, and the automation wired into Home Assistant — it was time for the payoff.&lt;/p&gt;
-
-&lt;p&gt;Here’s a short demo of the scanner in action:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(Insert video demo: scanning a Bluey card → Bluey starts playing on the Apple TV)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;The process feels natural:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Pick a Movie Card.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Tap it on the scanner.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Within seconds, the show or movie starts playing on the TV.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;No menus, no remotes, no digging through apps. Just the card, the scanner, and the content.&lt;/p&gt;
-
-&lt;p&gt;It’s been a huge success in our house — my kids love the ritual of picking a card and watching it come to life, and it gives them a healthier, more intentional way to choose what to watch.&lt;/p&gt;
-
-&lt;h2 id=&quot;closing-thoughts&quot;&gt;Closing Thoughts&lt;/h2&gt;
-
-&lt;p&gt;This project started as a way to combine electronics tinkering with something useful for the family, and it turned into one of our favorite weekend builds. Between the hands-on soldering, designing the cards, and the 3D-printed enclosure, everyone had a part to play — and the end result is something we use every day.&lt;/p&gt;
-
-&lt;p&gt;The best part? It’s endlessly extendable. Adding a new card is as simple as grabbing artwork, printing it, laminating it, and mapping the tag. The kids are already planning which shows to add next.&lt;/p&gt;
-
-&lt;p&gt;If you’d like to build your own, all the code snippets, 3D model, and automation examples are linked above. And if you do make one — I’d love to hear about it!&lt;/p&gt;
-
-&lt;p&gt;———————————–———————————–———————————–———————————–———————————–———————————–———————————–———————————–&lt;/p&gt;
-
-&lt;p&gt;META:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://simplyexplained.com/blog/how-i-built-an-nfc-movie-library-for-my-kids/&quot;&gt;&lt;u&gt;https://simplyexplained.com/blog/how-i-built-an-nfc-movie-library-for-my-kids/&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Each card is laminated with the poster of the movie/TV show that would play on TV if scanned. My daughter Emma really helped me out with this part. These cards are super cheap - 3$ would get you about 50 cards.&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; pic of cards &amp;gt;&lt;/p&gt;
-
-&lt;p&gt;Using my new 3D Printer, I printed a clean enclosure for the scanner, so I can mount it in a way that’s accessible to small children but also not intrusive. We ended up installing 2 of these scanners, one of them is in the living room and scored high on the Wife Acceptance Factor. Also printed a small box to hold all the cards and make it easy to move or hide them (another solution with a high WAF).&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; pic of enclosure and box&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;The scanner is built from an NFC reader chip that’s connected to a microcontroller, which connects the scanner to my smart home in order to send the command to the TV.&lt;/p&gt;
-
-&lt;p&gt;This integration is simple enough that someone can just install the smart home platform on some old computer for the sole purpose of this project! I’m using Home Assistant in my home and it controls all my lights, shades and much more, including all my TVs. It’s free, open-source and can run on a small Raspberry-Pi or an old computer that you can hide somewhere, as long as it has an internet connection.&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; Pic of home assistant &amp;gt;&lt;/p&gt;
-
-&lt;p&gt;The electronics part would require soldering 4 small cables, but there’s also a way to avoid that. The NFC reader is like 3$ on Ali Express, same for the microcontroller that is the brain of the scanner. I’m using ESPHome as the platform that generates all the code needed for the microcontroller. I’m only required to write a simple YAML config that tells ESPHome how to configure the device and how Home Assistance should communicate with it.&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; YAML &amp;gt;&lt;/p&gt;
-
-&lt;p&gt;When a card is read - the scanner, using the code generated from my YAML, would send a message to Home Assistant to play the content that’s associated with that card. The Home Assistant automation would get the identification of the card from the scanner and open the content in the relevant streaming app. I’m using Apple TV and there’s a simple way to open specific content using deep links, which Home Assistant can help with. Some of the main streaming services are supported, such as Netflix, Disney+ and Max, and also Plex for playing locally stored content (where I can also do a playback trick that I couldn’t do with the streaming services, more on that later).&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; pic of the automation ? &amp;gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; maybe do something about this paragraph and the previous generic home assistant spiel , use only this one?&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;lt;video of how everything works&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;Sponsored links&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Laminating machine&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Laminating pouches&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;———————————–&lt;/p&gt;
-
-&lt;p&gt;I saw several similar projects out there, but I liked &lt;a href=&quot;https://simplyexplained.com/blog/how-i-built-an-nfc-movie-library-for-my-kids/&quot;&gt;&lt;u&gt;the one by Xavier at Simply Explained&lt;/u&gt;&lt;/a&gt; the most&lt;/p&gt;
-</description>
-				<pubDate>Wed, 15 Oct 2025 00:00:00 -0400</pubDate>
-				<link>/2025/10/15/Tagity-tag/</link>
-				<guid isPermaLink="true">/2025/10/15/Tagity-tag/</guid>
-			</item>
-		
-			<item>
 				<title>Automating my balcony shade... with NFC!</title>
 				<description>&lt;p&gt;These past few months I spent mostly at home, as everyone else, and decided to take on a project to improve my time there. With three kids at our cozy apartment, it’s no wonder I loved spending a lot of time on our balcony. While I like the breeze and the view, I hated lowering and raising the sun shade. It’s a heavy shade, so it took more effort and time to operate than a regular bedroom window shade/blinds. I challenged myself to automate this shade by any means necessary!&lt;/p&gt;
 
@@ -3022,6 +2619,74 @@ READ_SYNC_STATS – Helps us get the sync state, if it’s currently syncing, pe
 				<pubDate>Wed, 24 Jul 2013 06:57:18 -0400</pubDate>
 				<link>/2013/07/24/write-your-own-android-sync-adapter/</link>
 				<guid isPermaLink="true">/2013/07/24/write-your-own-android-sync-adapter/</guid>
+			</item>
+		
+			<item>
+				<title>Create a secret doorway to your app</title>
+				<description>&lt;p&gt;This short post will be about creating a back-door to your app, giving you the option to provide more information or actions than you want end users to have. This will be using the Secret Code feature.&lt;/p&gt;
+
+&lt;p&gt;I came across some articles with list of codes in order to access some phone’s data (i.e. Camera’s firmware spec.), run some tests (i.e. Vibration test) or even perform actions such as reset to factory settings. Some examples can be found &lt;a href=&quot;http://www.redmondpie.com/hidden-android-secret-codes-for-samsung-htc-motorola-sony-lg-and-other-devices/&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://www.itworld.com/consumerization-it/351248/debug-your-phone-these-hidden-android-secret-codes&quot;&gt;here&lt;/a&gt; and even as &lt;a href=&quot;https://play.google.com/store/apps/details?id=cx.makaveli.androidsecretcodes&amp;amp;hl=en&quot;&gt;an app&lt;/a&gt; that indexes all that information.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-your-own&quot;&gt;Create your own&lt;/h2&gt;
+
+&lt;p&gt;Creating your own secret doorway for your app can help you get more information from users of your app in a time of need. Getting crash reports from end users can be done by several services such as ACRA or BugSense, but how about errors that are not crashes? How many times did your Mom/Spouse/Friend/Mailman showed you their phone, running your app, and said something like: “Why do I see duplicates on the list here?! Why can’t I sync??”. You probably can’t do anything without debugging the app or at least take a look at the app’s SharedPrefs/SQLiteDB. Using a backdoor can help you get more internal information that will help you find the cause for the problem, no computer is necessary!&lt;/p&gt;
+
+&lt;p&gt;Another cool thing is providing more actions to do with your app. You want to keep the app clean for your users, but you might want more power to yourself. You can tweak your internal settings, whether for testing purposes or just to try out new features on your everyday use. Not needing to compile a new version after each change of internal setting, can help a lot in the task of identifying tricky problems.&lt;/p&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+
+&lt;p&gt;Before learning how you can create your own secret code to do some cool stuff, let’s review some use cases that you can use it for:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Diagnose information - Presenting technical details of you app, such as generated UUID that can be used to find relevant server data.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Send internal data outside - You can dump app information, such as the SharedPrefs/DB data, and send it to you via email. Since this code runs on the same process as your app - you have access to everything!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Change settings - You can change the internal settings of your app. Showing more debug logs, communicating with a different server or even change the sorting order of the list you present the user. Anything that can help you understand more about the current situation of the app.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Demo mode - Need to show your app to investors? Showoff to your Friends? You can create shortcuts to some app features that are relatively difficult to simulate. For example: Notification that triggers every morning or when the phone is idle for more than 30mins. Maybe a SMS/phone-call triggered action, QR code scan or a sensor’s incoming data. You can create a demo screen to start everything you want to show on the app, and with sample data to make a neat presentation.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how&quot;&gt;How?&lt;/h2&gt;
+
+&lt;p&gt;Let’s see how to create one of our own secret code:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;receiver&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.receiver.DiagnoserReceiver&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;intent-filter&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;action&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;android.provider.Telephony.SECRET_CODE&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;data&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:scheme=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;android_secret_code&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:host=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;111222&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/intent-filter&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/receiver&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;That’s what you put on your manifest. Looks simple right? All we do is provide a listener to a secret code, defined in a &amp;lt;data&amp;gt; tag as the “android:host” attribute, and declare a receiver for it. On the receiver, we can just run some code, open an Activity, run a Service etc. Here’s an example of a receiver that starts a new Activity:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DiagnoserReceiver&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BroadcastReceiver&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onReceive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Context&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Intent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;intent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;android.provider.Telephony.SECRET_CODE&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;Intent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Intent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Intent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ACTION_MAIN&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Diagnoser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setFlags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Intent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;FLAG_ACTIVITY_NEW_TASK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;startActivity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We create an intent with the Activity class, Diagnoser, and start it. That activity will run on the same process as our app, allowing us to access all the data that our app has, using all the permissions that our app has been granted with.&lt;/p&gt;
+
+&lt;h2 id=&quot;use-it&quot;&gt;Use it&lt;/h2&gt;
+
+&lt;p&gt;To start our diagnose screen, all you need to do is go to the phone’s &lt;strong&gt;stock&lt;/strong&gt; dialer (third party dialers not always work with secret codes) and dial the secret code you defined in the “android:host” attribute on the manifest, in the following pattern: “&lt;em&gt;#&lt;/em&gt;#&lt;secret-code&gt;#*#*. In our example, you&apos;ll need to dial *#*#111222#*#*, the DiagnoserReceiver will receive the intent and start the Diagnoser activity.&lt;/secret-code&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s it. I hope this post helped you get more from your app. If you have more ideas for use cases for this feature - write them on the comments to help us all exploit this nice feature.&lt;/p&gt;
+</description>
+				<pubDate>Thu, 16 May 2013 20:07:09 -0400</pubDate>
+				<link>/2013/05/16/create-a-secret-doorway-to-your-app/</link>
+				<guid isPermaLink="true">/2013/05/16/create-a-secret-doorway-to-your-app/</guid>
 			</item>
 		
 	</channel>
