@@ -18,7 +18,7 @@
 
 &lt;p&gt;&lt;strong&gt;The solution:&lt;/strong&gt; build an NFC tag scanner that plays shows or movies when you tap a credit-card–sized “Movie Card.”&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image7.png&quot; style=&quot;width:3.16369in;height:4.20331in&quot; /&gt; (+ demo video, the one with the scanner on the wall)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image7.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image7.png&quot; /&gt;&lt;/a&gt; (+ demo video, the one with the scanner on the wall)&lt;/p&gt;
 
 &lt;p&gt;The scanner is connected to my &lt;a href=&quot;https://www.home-assistant.io/&quot;&gt;&lt;u&gt;Home Assistant&lt;/u&gt;&lt;/a&gt; smart home using &lt;a href=&quot;https://esphome.io/index.html&quot;&gt;&lt;u&gt;ESPHome&lt;/u&gt;&lt;/a&gt; - a framework that greatly simplifies creating custom smart devices.&lt;/p&gt;
 
@@ -133,14 +133,14 @@
 
 &lt;p&gt;The circuit is straightforward: connect an NFC reader module (PN532) to a microcontroller (ESP8266 WeMos D1 mini).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image9.png&quot; style=&quot;width:6.51in;height:5.23952in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image9.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image9.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;There are two ways to hook up the PN532: &lt;strong&gt;I²C&lt;/strong&gt; or &lt;strong&gt;SPI&lt;/strong&gt;. I went with I²C because it’s simpler - requires just 2 two data wires. For a tag scanner, throughput is minimal, so SPI’s extra speed doesn’t add any benefit. What it does add is more wiring (The MOSI, MISO, SCK and CS pins, also visible on the diagram above), which makes things unnecessarily messy.&lt;/p&gt;
 
 &lt;p&gt;One critical step: &lt;strong&gt;set the PN532’s mode correctly&lt;/strong&gt;. The board has tiny DIP switches (or sometimes solder pads) to toggle between I²C and SPI. Make sure these match your chosen mode—otherwise you’ll be staring at a non-responsive scanner and wondering why nothing works. Let’s just say I learned that lesson the hard way 😅.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image10.png&quot; style=&quot;width:5.41875in;height:7.20156in&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image10.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image10.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Once the jumpers were set, I wired the SDA and SCL pins from the PN532, to the Wemos D1 mini. You can map I²C lines to almost any pins; I chose &lt;strong&gt;D8&lt;/strong&gt; (for SDA) and &lt;strong&gt;D7&lt;/strong&gt; (for SCL). These need to match what we’ll later declare in the ESPHome config:&lt;/p&gt;
@@ -158,7 +158,7 @@
 &lt;p&gt;After confirming the wiring, I soldered everything together. A pair of &lt;em&gt;helping hands&lt;/em&gt; was invaluable here - keeping the boards aligned so I could stack them neatly and compactly. That’s important, since they need to fit snugly inside the enclosure, as we’ll see later.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image11.jpg&quot; style=&quot;width:16.0625in;height:21.33333in&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image11.jpg&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image11.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;With the hardware stacked and soldered, it was ready for the fun part - bringing it to life through ESPHome and tying it into Home Assistant, where we’ll write an automation to make the scanner react to different cards.&lt;/p&gt;
@@ -205,7 +205,7 @@
 
 &lt;p&gt;From there, the scanner can report any NFC tags it detects. Home Assistant has an Event Listening feature under Developer Tools, a quick scan of any card, while listening to “tag_scanned” events, will show some useful data for the card and the tag scanner. &lt;em&gt;tag_id&lt;/em&gt; is the card’s unique ID and &lt;em&gt;device_id&lt;/em&gt; is the tag scanner’s unique ID.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image3.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image3.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image3.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;We &lt;em&gt;could&lt;/em&gt; write data onto the cards, but we won’t do that here. There’s no need to complicate the process of adding new cards, since each card already has a permanent unique identifier. We’ll design an automation that maps each card’s Tag ID to the content we need to play.&lt;/p&gt;
 
@@ -228,24 +228,24 @@
 
 &lt;p&gt;First, the trigger is a &lt;em&gt;tag_scanned&lt;/em&gt; event, the same one we saw earlier when testing the scanner with the Developer Tools. The automation will be triggered when such an event is fired.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image2.png&quot; style=&quot;width:21.33333in;height:8.34375in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image2.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image2.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;We’ll define all the difference variables the automation uses:&lt;br /&gt;
 SCANNER_MAPPING - A simple mapping between Scanner IDs to the TV entity they should operate on. We can get the Scanner ID using the Event Listener tool we saw earlier.&lt;br /&gt;
 TARGET_TV - This variable resolves to the TV entity the automation targets, based on the Scanner ID that was provided by the &lt;em&gt;tag_scanned&lt;/em&gt; event (i.e. trigger.event.data.device_id). In this case, it defaults to the Living Room TV if the scanner is not listed in the mapping.&lt;br /&gt;
 CARD_MAPPING - Maps each card’s Tag ID to the content it should play.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image8.png&quot; style=&quot;width:21.33333in;height:14in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image8.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image8.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Each card mapping includes the Tag ID, a name (just for readability) and the Content ID. The automation supports a few content types, for several streaming services and Plex. We’ll see below how we deep link to open the content.&lt;/p&gt;
 
 &lt;p&gt;Next, we’ll prepare the TV by turning it on, if it’s not already.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image1.png&quot; style=&quot;width:21.33333in;height:14.60417in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image1.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image1.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;And now we’ll handle each content type by generating a different Deep Link URL, based on the service we need to start the playback on. In this example, we’re handling Netflix content by taking the card’s content ID using the CARD_MAPPING, and plugging that into Netflix’s Deep Link URL. This URL works on an Apple TV, which is what I have connected to my TVs, other streaming devices might require other ways to open a specific content on a specific streaming service.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image4.png&quot; style=&quot;width:21.33333in;height:19.73958in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image4.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image4.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;&amp;lt; Can i add a collapsable code viewer? &amp;gt;&lt;/em&gt;&lt;/p&gt;
 
@@ -287,9 +287,9 @@ CARD_MAPPING - Maps each card’s Tag ID to the content it should play.&lt;/p&gt
 
 &lt;p&gt;This keeps the aspect ratio consistent so the art doesn’t look stretched or squashed when printed.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image6.png&quot; style=&quot;width:21.33333in;height:9.90625in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image6.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image6.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image12.png&quot; style=&quot;width:21.33333in;height:7.96875in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image12.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image12.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;(Insert photos of resizing in Google Docs)&lt;/em&gt;&lt;/p&gt;
 
@@ -297,15 +297,15 @@ CARD_MAPPING - Maps each card’s Tag ID to the content it should play.&lt;/p&gt
 
 &lt;p&gt;&lt;em&gt;(Insert photos of Emma working on the cards)&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image14.jpg&quot; style=&quot;width:16.0625in;height:21.33333in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image14.jpg&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image14.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;onboarding-a-new-card&quot;&gt;Onboarding a New Card&lt;/h3&gt;
 
 &lt;p&gt;Once the physical card is ready, the final step is onboarding it into Home Assistant. To make things easier, I’ve added to the automation a fallback in case we scan a card that’s not assigned to any content, which prints the card UID to Home Assistant’s Logbook.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image5.png&quot; style=&quot;width:21.33333in;height:19.90625in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image5.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image5.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image13.png&quot; style=&quot;width:21.33333in;height:1.40625in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//assets/images/2025-10-19-Tagity-tag/media/image13.png&quot;&gt;&lt;img src=&quot;//assets/images/2025-10-19-Tagity-tag/media/image13.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This makes it super easy to grow the collection - every time we want to add a new Movie Card, we just pick art, laminate, scan once, and drop the Card’s UID into the automation with the content we want to play.&lt;/p&gt;
 
