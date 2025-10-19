@@ -205,7 +205,7 @@
 
 &lt;p&gt;From there, the scanner can report any NFC tags it detects. Home Assistant has an Event Listening feature under Developer Tools, a quick scan of any card, while listening to “tag_scanned” events, will show some useful data for the card and the tag scanner. &lt;em&gt;tag_id&lt;/em&gt; is the card’s unique ID and &lt;em&gt;device_id&lt;/em&gt; is the tag scanner’s unique ID.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image3.png&quot; style=&quot;width:21.33333in;height:17.13542in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image3.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We &lt;em&gt;could&lt;/em&gt; write data onto the cards, but we won’t do that here. There’s no need to complicate the process of adding new cards, since each card already has a permanent unique identifier. We’ll design an automation that maps each card’s Tag ID to the content we need to play.&lt;/p&gt;
 
