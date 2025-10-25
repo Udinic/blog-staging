@@ -7,8 +7,8 @@
 		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Tagity tag</title>
-				<description>&lt;p&gt;&amp;lt;banner photo&amp;gt;&lt;/p&gt;
+				<title>Building CardFlix – A Modern Twist on the Old Movie Shelf</title>
+				<description>&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image17.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image17.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Intro:&lt;/p&gt;
 
@@ -16,14 +16,15 @@
 
 &lt;p&gt;To make things trickier, a lot of the content they like is spread across different streaming services, or tucked away on my Plex server which can be confusing for kids to navigate on their own.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;The solution:&lt;/strong&gt; We built an NFC tag scanner that plays TV shows or movies when by tapping a credit-card–sized “Movie Card.”&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The solution:&lt;/strong&gt; We built an NFC tag scanner that plays TV shows or movies by tapping a credit-card–sized card.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image4.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image4.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
+&lt;div class=&quot;media-center&quot;&gt;
 &lt;div class=&quot;embed-container&quot;&gt;
-  &lt;iframe src=&quot;https://www.youtube.com/embed/page.yt-demo-insideout&quot; width=&quot;540&quot; height=&quot;960&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/_sqxoAX3GW0&quot; width=&quot;540&quot; height=&quot;960&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
   &lt;/iframe&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;p&gt;The scanner runs on &lt;a href=&quot;https://esphome.io/&quot;&gt;&lt;u&gt;ESPHome&lt;/u&gt;&lt;/a&gt; - a framework that makes creating custom smart devices surprisingly simple, and connects to my &lt;a href=&quot;https://www.home-assistant.io/&quot;&gt;&lt;u&gt;Home Assistant&lt;/u&gt;&lt;/a&gt; smart home setup. With my kids’ help, we created &lt;strong&gt;over 50 cards&lt;/strong&gt; covering all their favorite shows and movies, and the collection keeps growing. It was such a hit that I built a second scanner for another room in our house. To make the scanner blend in, I designed and 3D-printed a small enclosure that matches the décor of the room while keeping the scanner kid-friendly and accessible.&lt;/p&gt;
 
 &lt;p&gt;Creating the initial version of this scanner was a fun weekend project. I was able to show my kids the process of bringing an idea to life, in addition to gaining more confidence creating ESPHome projects, which became more useful for other projects that I’ll share soon.&lt;/p&gt;
@@ -32,14 +33,14 @@
 
 &lt;p&gt;The circuit is straightforward: connecting an NFC reader module (PN532) to a microcontroller (ESP8266 WeMos D1 mini).&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image5.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image5.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image2.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image2.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;There are two methods to hook up the PN532: &lt;strong&gt;I²C&lt;/strong&gt; or &lt;strong&gt;SPI&lt;/strong&gt;. I went with I²C because it’s simpler - requires just 2 two data wires. For a tag scanner, throughput is minimal, so SPI’s extra speed doesn’t add any benefit. What it does add is more wiring (The MOSI, MISO, SCK and CS pins, also visible on the diagram above), which makes things unnecessarily messy.&lt;/p&gt;
 
 &lt;p&gt;One critical step: &lt;strong&gt;set the PN532’s mode correctly&lt;/strong&gt;. The board has tiny DIP switches (or sometimes solder pads) to toggle between I²C and SPI. Make sure these match your chosen mode—otherwise you’ll be staring at a non-responsive scanner and wondering why nothing works. Let’s just say I learned that lesson the hard way…&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image6.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image6.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image9.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image9.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Once the correct mode is set, I wired the SDA and SCL pins from the PN532 to the Wemos D1 mini. You can map I²C lines to almost any pins on the microcontroller; I chose &lt;strong&gt;D8&lt;/strong&gt; (for SDA) and &lt;strong&gt;D7&lt;/strong&gt; (for SCL). These need to match what we’ll later declare in the ESPHome config:&lt;/p&gt;
@@ -47,10 +48,10 @@
 &lt;p&gt;After confirming the wiring, I soldered everything together. A pair of &lt;em&gt;helping hands&lt;/em&gt; was invaluable here - keeping the boards aligned so I could stack them neatly and compactly. That’s important, since they need to fit snugly inside the enclosure, as we’ll see later.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image12.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image12.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image11.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image11.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;BTW, the reason I picked the &lt;em&gt;Wemos D1 mini&lt;/em&gt; as the microcontroller for this project is because of its size. I knew I would need to eventually mount the device some place public, so having a small form-factor is a useful feature. ESPHome, which we’ll talk about next, supports many other types in different shapes and capabilities. Even &lt;a href=&quot;https://www.aliexpress.com/p/tesla-landing/index.html?scenario=c_ppc_item_bridge&amp;amp;productId=3256807292829704&amp;amp;_immersiveMode=true&amp;amp;withMainCard=true&amp;amp;src=google&amp;amp;aff_platform=true&amp;amp;isdl=y&amp;amp;src=google&amp;amp;albch=shopping&amp;amp;acnt=708-803-3821&amp;amp;isdl=y&amp;amp;slnk=&amp;amp;plac=&amp;amp;mtctp=&amp;amp;albbt=Google_7_shopping&amp;amp;aff_platform=google&amp;amp;aff_short_key=UneMJZVf&amp;amp;gclsrc=aw.ds&amp;amp;&amp;amp;albagn=888888&amp;amp;&amp;amp;ds_e_adid=&amp;amp;ds_e_matchtype=&amp;amp;ds_e_device=c&amp;amp;ds_e_network=x&amp;amp;ds_e_product_group_id=&amp;amp;ds_e_product_id=en3256807292829704&amp;amp;ds_e_product_merchant_id=5401769578&amp;amp;ds_e_product_country=US&amp;amp;ds_e_product_language=en&amp;amp;ds_e_product_channel=online&amp;amp;ds_e_product_store_id=&amp;amp;ds_url_v=2&amp;amp;albcp=20123110713&amp;amp;albag=&amp;amp;isSmbAutoCall=false&amp;amp;needSmbHouyi=false&amp;amp;gad_source=1&amp;amp;gad_campaignid=20123112624&amp;amp;gbraid=0AAAAAD6I-hGKwPWeTCl8YKAKsVVTzx_RT&amp;amp;gclid=CjwKCAjwgeLHBhBuEiwAL5gNESTejKY5-Clz46eHNHQQwKLOcKbxZD81aDkZ8ksMDQL_S0yo1WgmrBoCh2wQAvD_BwE&quot;&gt;&lt;u&gt;this baby-chip&lt;/u&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;BTW, the reason I picked the &lt;em&gt;Wemos D1 mini&lt;/em&gt; as the microcontroller for this project is because of its size. I knew I would need to eventually mount the device near the TV, so having a small form-factor is a useful feature. ESPHome, which we’ll talk about next, supports several other microcontroller types in different shapes and with varied capabilities. Even &lt;a href=&quot;https://www.aliexpress.com/p/tesla-landing/index.html?scenario=c_ppc_item_bridge&amp;amp;productId=3256807292829704&amp;amp;_immersiveMode=true&amp;amp;withMainCard=true&amp;amp;src=google&amp;amp;aff_platform=true&amp;amp;isdl=y&amp;amp;src=google&amp;amp;albch=shopping&amp;amp;acnt=708-803-3821&amp;amp;isdl=y&amp;amp;slnk=&amp;amp;plac=&amp;amp;mtctp=&amp;amp;albbt=Google_7_shopping&amp;amp;aff_platform=google&amp;amp;aff_short_key=UneMJZVf&amp;amp;gclsrc=aw.ds&amp;amp;&amp;amp;albagn=888888&amp;amp;&amp;amp;ds_e_adid=&amp;amp;ds_e_matchtype=&amp;amp;ds_e_device=c&amp;amp;ds_e_network=x&amp;amp;ds_e_product_group_id=&amp;amp;ds_e_product_id=en3256807292829704&amp;amp;ds_e_product_merchant_id=5401769578&amp;amp;ds_e_product_country=US&amp;amp;ds_e_product_language=en&amp;amp;ds_e_product_channel=online&amp;amp;ds_e_product_store_id=&amp;amp;ds_url_v=2&amp;amp;albcp=20123110713&amp;amp;albag=&amp;amp;isSmbAutoCall=false&amp;amp;needSmbHouyi=false&amp;amp;gad_source=1&amp;amp;gad_campaignid=20123112624&amp;amp;gbraid=0AAAAAD6I-hGKwPWeTCl8YKAKsVVTzx_RT&amp;amp;gclid=CjwKCAjwgeLHBhBuEiwAL5gNESTejKY5-Clz46eHNHQQwKLOcKbxZD81aDkZ8ksMDQL_S0yo1WgmrBoCh2wQAvD_BwE&quot;&gt;&lt;u&gt;this baby-chip&lt;/u&gt;&lt;/a&gt; is supported.&lt;/p&gt;
 
 &lt;h2 id=&quot;smart-home-integration&quot;&gt;Smart Home Integration&lt;/h2&gt;
 
@@ -84,7 +85,7 @@
 
 &lt;p&gt;From there, the scanner can report any NFC tags it detects. Home Assistant has an Event Listening feature under Developer Tools, a quick scan of any card, while listening to “tag_scanned” events, will show some useful data for the card and the tag scanner. &lt;em&gt;tag_id&lt;/em&gt; is the card’s unique ID and &lt;em&gt;device_id&lt;/em&gt; is the tag scanner’s unique ID.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image9.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image9.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image15.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image15.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;We &lt;em&gt;could&lt;/em&gt; write data onto the cards, but we won’t do that here. There’s no need to complicate the process of adding new cards, since each card already has a permanent unique identifier. We’ll design an automation that maps each card’s Tag ID to the content we need to play.&lt;/p&gt;
 
@@ -108,7 +109,7 @@
 &lt;p&gt;&lt;strong&gt;1. The automation’s trigger - scanning a card.&lt;/strong&gt;&lt;br /&gt;
 The trigger is a &lt;em&gt;tag_scanned&lt;/em&gt; event, the same one we saw earlier when testing the scanner using the Developer Tools. The automation will be triggered when such an event is fired.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image3.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image3.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image1.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image1.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;2. Defining the variables we need.&lt;/strong&gt;&lt;br /&gt;
 These are the variables the automation uses:&lt;/p&gt;
@@ -118,14 +119,14 @@ These are the variables the automation uses:&lt;/p&gt;
   &lt;li&gt;&lt;strong&gt;CARD_MAPPING&lt;/strong&gt; - Maps each card’s Tag ID to the content it should play.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image2.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image2.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image5.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image5.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Each card mapping includes the Tag ID, a name (just for readability) and the Content ID. The automation supports a few content types, for several streaming services and Plex. We’ll see below how we deep link to open the content.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;3. Turning on the TV, if needed&lt;/strong&gt;&lt;br /&gt;
 The TARGET_TV variable holds the TV we’re targeting, we’ll check its status and turn on if needed.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image8.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image8.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image16.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image16.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;4. Start the requested content using the content mapping defined in CARD_MAPPING&lt;/strong&gt;&lt;br /&gt;
 Each streaming service has its own Deep Link format, for each content we’ll see which streaming service is needed and use it to start the playback.&lt;/p&gt;
@@ -137,11 +138,7 @@ Each streaming service has its own Deep Link format, for each content we’ll se
 
 &lt;p&gt;This URL works on an Apple TV, which is connected to my TV. It’s possible other media devices, such as Smart TVs, would have different requirements to deep link to a specific content.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image13.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image13.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;&amp;lt; Can i add a collapsable code viewer? &amp;gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;lt;link to gist&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image18.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image18.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;deep-linking-to-content&quot;&gt;Deep Linking to Content&lt;/h4&gt;
 
@@ -184,9 +181,14 @@ Each streaming service has its own Deep Link format, for each content we’ll se
 
 &lt;p&gt;And here’s the automation in action:&lt;/p&gt;
 
+&lt;div class=&quot;media-center&quot;&gt;
 &lt;div class=&quot;embed-container&quot;&gt;
-  &lt;iframe src=&quot;https://www.youtube.com/embed/page.yt-demo-bluey&quot; width=&quot;540&quot; height=&quot;960&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/Z5VRNPnNeZE&quot; width=&quot;540&quot; height=&quot;960&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
   &lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;image-caption&quot;&gt;
+	Card scan test
 &lt;/div&gt;
 
 &lt;h2 id=&quot;creating-the-content-cards&quot;&gt;Creating the Content Cards&lt;/h2&gt;
@@ -199,21 +201,21 @@ Each streaming service has its own Deep Link format, for each content we’ll se
 
 &lt;p&gt;Once we picked the right art, we copied it into a Google Doc and resized it to the dimensions of a credit card (Tip: resize to Width 2.12 inch, Height: 3.36 inch, Ratio: 1.583333). We put a few posters on a single page and printed it.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image7.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image7.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image14.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image14.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The printed poster we put on top of the card, slipped into a &lt;a href=&quot;https://a.co/d/jixghIZ&quot;&gt;&lt;u&gt;Laminating Pouch&lt;/u&gt;&lt;/a&gt; and from there straight to the laminating machine. The &lt;a href=&quot;https://a.co/d/iGTmw5o&quot;&gt;&lt;u&gt;one I got&lt;/u&gt;&lt;/a&gt; is cheap (under $20) and it served us well in several projects, definitely nice to have around the house.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image11.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image11.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image10.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image10.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;onboarding-a-new-card&quot;&gt;Onboarding a New Card&lt;/h3&gt;
 
 &lt;p&gt;Once the physical card is ready, the final step is onboarding it into Home Assistant. To make things easier, I’ve added to the automation a fallback in case we scan a card that’s not assigned to any content, which prints the card’s Tag ID to Home Assistant’s Logbook.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image10.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image10.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image13.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image13.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This is how the Logbook entry looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image1.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image1.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image4.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image4.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Then all we need is to add a new entry in the CARD_MAPPING variable inside our automation:&lt;/p&gt;
 
@@ -232,25 +234,63 @@ Each streaming service has its own Deep Link format, for each content we’ll se
 
 &lt;p&gt;Instead of designing something from scratch, I started with an existing enclosure I found online and personalized it with a simple logo that ChatGPT helped create. The result was a clean, kid-friendly enclosure with a custom logo that makes it feel like a finished product.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;(Insert render/screenshot of the enclosure with logo)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image3.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image3.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;I printed the design on my Bambu Lab printer, using standard PLA and 3 walls for sturdiness. The compact stack of the electronics fit snugly inside, with just enough room for the wires and solder joints.&lt;/p&gt;
+&lt;p&gt;I printed the design on my Bambu Lab printer, using standard PLA. The compact stack of the electronics fit snugly inside, with just enough room for the wires and solder joints.&lt;/p&gt;
 
-&lt;p&gt;I’ve shared my remix of the design on MakerWorld, so if you’d like to print your own - get it here.&lt;/p&gt;
+&lt;table class=&quot;side-by-side&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image20.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image20.jpg&quot; /&gt;&lt;/a&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image19.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image19.jpg&quot; /&gt;&lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
 
-&lt;p&gt;In addition, I created an inconspicuous box that I can keep next to the tag scanner and hold a few TV/Movie cards I want accessible.&lt;/p&gt;
+&lt;p&gt;You can download the enclosure from &lt;a href=&quot;https://makerworld.com/en/models/1924849-cardflix-enclosure#profileId-2065641&quot;&gt;&lt;u&gt;here&lt;/u&gt;&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&amp;lt; Insert pic of the box &amp;gt;&lt;/p&gt;
+&lt;p&gt;To keep the cards organized and accessible I created 2 boxes - one to hold a large group of cards, another for holding a small group of “most favorite” cards next to the reader.&lt;/p&gt;
 
-&lt;p&gt;Get it here. &amp;lt; ←- Add link to Makerworld &amp;gt;&lt;/p&gt;
+&lt;table class=&quot;side-by-side&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image7.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image7.png&quot; /&gt;&lt;/a&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image6.png&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image6.png&quot; /&gt;&lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;In case you wonder - there are 4 Bluey cards in those boxes.&lt;/p&gt;
+
+&lt;p&gt;Links: &lt;a href=&quot;https://makerworld.com/en/models/1924938-card-box-for-cardflix#profileId-2065737&quot;&gt;&lt;u&gt;Cards box&lt;/u&gt;&lt;/a&gt; / &lt;a href=&quot;https://makerworld.com/en/models/1924909-card-box-for-cardflix-slim#profileId-2065705&quot;&gt;&lt;u&gt;Cards box (slim)&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;bringing-it-all-together&quot;&gt;Bringing It All Together&lt;/h2&gt;
 
 &lt;p&gt;With the hardware soldered, the enclosure printed, the Movie Cards laminated, and the automation wired into Home Assistant - it was time for the payoff.&lt;/p&gt;
 
+&lt;table class=&quot;side-by-side&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image8.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image8.jpg&quot; /&gt;&lt;/a&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &lt;a href=&quot;/assets/images/2025-10-19-Tagity-tag/media/image12.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-19-Tagity-tag/media/image12.jpg&quot; /&gt;&lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
 &lt;p&gt;Here’s a short demo of the scanner in action:&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;(Insert video demo: scanning a Bluey card → Bluey starts playing on the Apple TV)&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;media-center&quot;&gt;
+&lt;div class=&quot;embed-container&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/jGjedY8tdiY&quot; width=&quot;540&quot; height=&quot;960&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
 &lt;p&gt;No menus, no remotes, no digging through apps. Just the card, the scanner, and the content.&lt;/p&gt;
 
@@ -260,52 +300,56 @@ Each streaming service has its own Deep Link format, for each content we’ll se
 
 &lt;p&gt;This project started as a way to combine electronics tinkering with something useful for the family, and it turned into one of our favorite weekend builds. Between the hands-on soldering, designing the cards, and the 3D-printed enclosure, everyone had a part to play - and the end result is something truly useful.&lt;/p&gt;
 
-&lt;p&gt;If you’d like to build your own, all the code snippets, 3D model, and automation examples are linked above. And if you do make one - I’d love to hear about it!&lt;/p&gt;
+&lt;p&gt;If you’d like to build your own, all the relevant links to get you through that are below. And if you do make one - I’d love to hear about it!&lt;/p&gt;
 
-&lt;p&gt;META:&lt;/p&gt;
+&lt;h3 id=&quot;links&quot;&gt;Links&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://simplyexplained.com/blog/how-i-built-an-nfc-movie-library-for-my-kids/&quot;&gt;&lt;u&gt;https://simplyexplained.com/blog/how-i-built-an-nfc-movie-library-for-my-kids/&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Each card is laminated with the poster of the movie/TV show that would play on TV if scanned. My daughter Emma really helped me out with this part. These cards are super cheap - 3$ would get you about 50 cards.&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; pic of cards &amp;gt;&lt;/p&gt;
-
-&lt;p&gt;Using my new 3D Printer, I printed a clean enclosure for the scanner, so I can mount it in a way that’s accessible to small children but also not intrusive. We ended up installing 2 of these scanners, one of them is in the living room and scored high on the Wife Acceptance Factor. Also printed a small box to hold all the cards and make it easy to move or hide them (another solution with a high WAF).&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; pic of enclosure and box&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;The scanner is built from an NFC reader chip that’s connected to a microcontroller, which connects the scanner to my smart home in order to send the command to the TV.&lt;/p&gt;
-
-&lt;p&gt;This integration is simple enough that someone can just install the smart home platform on some old computer for the sole purpose of this project! I’m using Home Assistant in my home and it controls all my lights, shades and much more, including all my TVs. It’s free, open-source and can run on a small Raspberry-Pi or an old computer that you can hide somewhere, as long as it has an internet connection.&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; Pic of home assistant &amp;gt;&lt;/p&gt;
-
-&lt;p&gt;The electronics part would require soldering 4 small cables, but there’s also a way to avoid that. The NFC reader is like 3$ on Ali Express, same for the microcontroller that is the brain of the scanner. I’m using ESPHome as the platform that generates all the code needed for the microcontroller. I’m only required to write a simple YAML config that tells ESPHome how to configure the device and how Home Assistance should communicate with it.&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; YAML &amp;gt;&lt;/p&gt;
-
-&lt;p&gt;When a card is read - the scanner, using the code generated from my YAML, would send a message to Home Assistant to play the content that’s associated with that card. The Home Assistant automation would get the identification of the card from the scanner and open the content in the relevant streaming app. I’m using Apple TV and there’s a simple way to open specific content using deep links, which Home Assistant can help with. Some of the main streaming services are supported, such as Netflix, Disney+ and Max, and also Plex for playing locally stored content (where I can also do a playback trick that I couldn’t do with the streaming services, more on that later).&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; pic of the automation ? &amp;gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;lt; maybe do something about this paragraph and the previous generic home assistant spiel , use only this one?&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;lt;video of how everything works&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;Sponsored links&lt;/p&gt;
+&lt;p&gt;Electronics:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Laminating machine&lt;/p&gt;
+    &lt;p&gt;Microcontroller: WeMos D1 Mini&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Laminating pouches&lt;/p&gt;
+    &lt;p&gt;NFC Reader: PN532&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;———————————–&lt;/p&gt;
+&lt;p&gt;Code:&lt;/p&gt;
 
-&lt;p&gt;I saw several similar projects out there, but I liked &lt;a href=&quot;https://simplyexplained.com/blog/how-i-built-an-nfc-movie-library-for-my-kids/&quot;&gt;&lt;u&gt;the one by Xavier at Simply Explained&lt;/u&gt;&lt;/a&gt; the most&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;ESPHome config yaml&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Home Assistant Automation yaml&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lamination:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.amazon.com/dp/B07PJTQGL3?ref=cm_sw_r_cp_ud_dp_C1AJMVC6QCAVZP0EF9JT&amp;amp;ref_=cm_sw_r_cp_ud_dp_C1AJMVC6QCAVZP0EF9JT&amp;amp;social_share=cm_sw_r_cp_ud_dp_C1AJMVC6QCAVZP0EF9JT&amp;amp;th=1&quot;&gt;&lt;u&gt;Crenova Laminator Machine&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.amazon.com/dp/B00GYDTV5M?ref=cm_sw_r_cp_ud_dp_54SEK6WE8GBVS65MTWGV&amp;amp;ref_=cm_sw_r_cp_ud_dp_54SEK6WE8GBVS65MTWGV&amp;amp;social_share=cm_sw_r_cp_ud_dp_54SEK6WE8GBVS65MTWGV&amp;amp;th=1&quot;&gt;&lt;u&gt;Laminating Pouches, card-sized&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;3D Print Models:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://makerworld.com/en/models/1924849-cardflix-enclosure#profileId-2065641&quot;&gt;&lt;u&gt;Enclosure&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://makerworld.com/en/models/1924938-card-box-for-cardflix#profileId-2065737&quot;&gt;&lt;u&gt;Card Box (Large)&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://makerworld.com/en/models/1924909-card-box-for-cardflix-slim#profileId-2065705&quot;&gt;&lt;u&gt;Card Box (Slim)&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 </description>
 				<pubDate>Sun, 19 Oct 2025 00:00:00 -0400</pubDate>
 				<link>/2025/10/19/Tagity-tag/</link>

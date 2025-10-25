@@ -594,3 +594,29 @@ table code a:hover {
   color: #83AF9B !important;
   text-decoration: none !important;
 }
+
+/* Side-by-side images */
+.side-by-side {
+  width: 100%;
+  border: none;
+  margin: 20px 0;
+}
+
+.side-by-side tr {
+  border: none;
+}
+
+.side-by-side td {
+  width: 50%;
+  text-align: center;
+  border: none;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.side-by-side img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
