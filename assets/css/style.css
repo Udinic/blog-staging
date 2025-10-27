@@ -522,7 +522,20 @@ ul.dropdown-menu>li>a>i.fa {
   text-align: center;
   font-size: 16px;
   color: light-grey;
+  padding: 2px 0px 15px;
+  margin-top: -8px;
+}
+
+.side-by-side + .image-caption {
+  margin-top: -15px;
+}
+
+.video-caption {
+  text-align: center;
+  font-size: 16px;
+  color: light-grey;
   padding: 4px 0px 10px;
+  margin-top: 10px;
 }
 
 .image-spacer {
