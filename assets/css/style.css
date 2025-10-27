@@ -620,3 +620,14 @@ table code a:hover {
   display: block;
   margin: 0 auto;
 }
+
+/* Text selection styling */
+::selection {
+  background-color: #83AF9B;
+  color: #282e39;
+}
+
+::-moz-selection {
+  background-color: #83AF9B;
+  color: #282e39;
+}
