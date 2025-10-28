@@ -216,9 +216,9 @@
 	Circuit diagram showing the PN532 NFC reader connected to the microcontroller
 </div>
 
-<p>There are two methods to hook up the PN532: <strong>I²C</strong> or <strong>SPI</strong>. I went with I²C because it’s simpler - requires just 2 two data wires (vs. 4 wires needed for SPI). For a tag scanner, throughput is minimal, so SPI’s extra speed doesn’t add any benefit.</p>
+<p>To connect a microcontroller, like the Wemos D1 Mini, to an NFC reader (or other peripherals such as sensors, displays etc.) there are 2 common methods: <strong>I²C</strong> or <strong>SPI</strong>. SPI can handle higher throughput than I²C and is generally faster, which is good if we connect an LCD display and need to move a lot of pixels quickly for it, but it’s not particularly useful for a simple tag scanner. I chose I²C because it’s simpler to hook up, it needs only 2 wires in compare to 4 wires we need to support SPI connection.</p>
 
-<p>One critical step: <strong>set the PN532’s mode correctly</strong>. The board has tiny DIP switches to toggle between I²C and SPI. Make sure these match your chosen mode - otherwise you’ll be staring at a non-responsive scanner and wondering why nothing works. Let’s just say I learned that lesson the hard way…</p>
+<p>One critical step to note here: <strong>set the PN532’s mode correctly</strong>. The board has tiny DIP switches to toggle between I²C and SPI. Make sure these match your chosen mode - otherwise you’ll be staring at a non-responsive scanner and wondering why nothing works. Let’s just say I learned that lesson the hard way…</p>
 
 <p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image10.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image10.png" /></a></p>
 <div class="image-caption">
@@ -234,7 +234,7 @@
 	Soldered electronics stack help by the helping hands
 </div>
 
-<p>BTW, the reason I picked the <em>Wemos D1 mini</em> as the microcontroller for this project is because of its size. I knew I would need to eventually mount the device near the TV, so having a small form-factor is a useful feature. ESPHome, which we’ll talk about next, supports several other microcontroller types in different shapes and with varied capabilities. Even <a href="https://www.aliexpress.com/p/tesla-landing/index.html?scenario=c_ppc_item_bridge&amp;productId=3256807292829704&amp;_immersiveMode=true&amp;withMainCard=true&amp;src=google&amp;aff_platform=true&amp;isdl=y&amp;src=google&amp;albch=shopping&amp;acnt=708-803-3821&amp;isdl=y&amp;slnk=&amp;plac=&amp;mtctp=&amp;albbt=Google_7_shopping&amp;aff_platform=google&amp;aff_short_key=UneMJZVf&amp;gclsrc=aw.ds&amp;&amp;albagn=888888&amp;&amp;ds_e_adid=&amp;ds_e_matchtype=&amp;ds_e_device=c&amp;ds_e_network=x&amp;ds_e_product_group_id=&amp;ds_e_product_id=en3256807292829704&amp;ds_e_product_merchant_id=5401769578&amp;ds_e_product_country=US&amp;ds_e_product_language=en&amp;ds_e_product_channel=online&amp;ds_e_product_store_id=&amp;ds_url_v=2&amp;albcp=20123110713&amp;albag=&amp;isSmbAutoCall=false&amp;needSmbHouyi=false&amp;gad_source=1&amp;gad_campaignid=20123112624&amp;gbraid=0AAAAAD6I-hGKwPWeTCl8YKAKsVVTzx_RT&amp;gclid=CjwKCAjwgeLHBhBuEiwAL5gNESTejKY5-Clz46eHNHQQwKLOcKbxZD81aDkZ8ksMDQL_S0yo1WgmrBoCh2wQAvD_BwE"><u>this baby-chip</u></a> is supported.</p>
+<p>BTW, the reason I picked the <em>Wemos D1 mini</em> as the microcontroller for this project is because of its size. I knew I would need to eventually mount the device near the TV, so having a small form-factor is a useful feature. ESPHome, which we’ll talk about next, supports several other microcontroller types in different shapes and with varied capabilities. Even <a href="https://amzn.to/434jtWK"><u>this baby-chip</u></a> is supported.</p>
 
 <h2 id="smart-home-integration">Smart Home Integration</h2>
 
