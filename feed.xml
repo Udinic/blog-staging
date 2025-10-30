@@ -63,6 +63,8 @@
 
 &lt;p&gt;With the hardware stacked and soldered, it was ready for the fun part - bringing it to life through ESPHome and tying it into Home Assistant, where we’ll write an automation to make the scanner react to different cards.&lt;/p&gt;
 
+&lt;p&gt;If you’re new to &lt;a href=&quot;https://www.home-assistant.io/&quot;&gt;Home Assistant&lt;/a&gt;, it’s an open-source smart-home system that ties all your devices together. You can set it up in under an hour on a Raspberry Pi or any old PC — so even if you don’t already have it running, it’s easy to add for this project.&lt;/p&gt;
+
 &lt;h3 id=&quot;esphome-config-basics&quot;&gt;ESPHome Config Basics&lt;/h3&gt;
 
 &lt;p&gt;The scanner runs on &lt;a href=&quot;https://esphome.io/&quot;&gt;&lt;u&gt;ESPHome&lt;/u&gt;&lt;/a&gt;, which makes connecting hardware like the PN532 reader almost trivial. Instead of writing firmware, you just declare the pins and components in YAML, and ESPHome takes care of the rest.&lt;/p&gt;
@@ -352,7 +354,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 
 &lt;h2 id=&quot;closing-thoughts&quot;&gt;Closing Thoughts&lt;/h2&gt;
 
-&lt;p&gt;This project started as a way to combine electronics tinkering with something useful for the family, and it turned into one of our favorite weekend builds. Between the hands-on soldering, designing the cards, and the 3D-printed enclosure, everyone had a part to play - and the end result is something truly useful.&lt;/p&gt;
+&lt;p&gt;This project started as a way to combine electronics tinkering with something useful for the family, and it turned into one of our favorite weekend builds. Between the hands-on soldering, designing the cards, and the 3D-printed enclosure, everyone got a part to play - and the end result is something truly useful.&lt;/p&gt;
 
 &lt;p&gt;If you’d like to build your own, all the relevant links to get you through that are below. And if you do make one - I’d love to hear about it!&lt;/p&gt;
 
