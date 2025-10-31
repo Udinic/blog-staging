@@ -187,9 +187,9 @@
     
        <p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg" /></a></p>
 
-<p>Watching TV is one of my favorite activities, but I noticed it became too easy for kids (and adults) to fall into the endless loop of short, addictive YouTube videos instead of enjoying a thoughtful episode of a TV series or diving into an adventure movie. I grew tired of seeing my kids glued to the screen to watch some Youtuber doing a ridiculous “Fast-Food Challenge”. I figured that if I’ll make the good content to be more accessible and fun to play - they will do it more often.</p>
+<p>Watching TV is one of my favorite activities, but I noticed it’s become too easy for kids (and adults) to fall into the endless loop of short, addictive YouTube videos instead of enjoying a thoughtful episode of a TV show or diving into an adventure movie. I got tired of seeing my kids glued to the screen watching yet another YouTuber attempt a ridiculous “Fast-Food Challenge.”</p>
 
-<p>The solution: Playing content on the TV by scanning “Movie Cards” using NFC. I’m calling this - <strong>CardFlix</strong>.</p>
+<p>So I decided to make good content more accessible - and fun to play. The result: watching content on the TV by scanning physical <strong>Movie Cards</strong> with NFC. I call it <strong>CardFlix</strong>.</p>
 
 <div class="media-center">
 <div class="embed-container">
@@ -205,7 +205,7 @@
 
 <p>The scanner runs on <a href="https://esphome.io/"><u>ESPHome</u></a> - a framework that makes creating custom smart devices surprisingly simple, and connects to my <a href="https://www.home-assistant.io/"><u>Home Assistant</u></a> smart home setup. With my kids’ help, we created <strong>over 50 cards</strong> covering all their favorite shows and movies, and the collection keeps growing. It was such a hit that I built a second scanner for another room in our house. To make the scanner blend in, I designed and 3D-printed a small enclosure that matches the décor of the room while keeping the scanner kid-friendly and accessible.</p>
 
-<p>Creating the initial version of this scanner was a fun weekend project. I was able to show my kids the process of bringing an idea to life, in addition to gaining more confidence creating ESPHome projects, which became more useful for other projects that I’ll share soon.</p>
+<p>Creating the initial version of this scanner was a fun weekend project. I was able to show my kids the process of bringing an idea to life, in addition to me gaining more confidence creating ESPHome projects, which became more useful for other projects that I’ll share soon.</p>
 
 <h2 id="building-the-electronics">Building the electronics</h2>
 
@@ -240,8 +240,7 @@
 
 <p>With the hardware stacked and soldered, it was ready for the fun part - bringing it to life through ESPHome and tying it into Home Assistant, where we’ll write an automation to make the scanner react to different cards.</p>
 
-<p>If you’re new to <a href="https://www.home-assistant.io/">Home Assistant</a>, it’s an open-source smart-home system that ties all your devices together. You can set it up in under an hour on a Raspberry Pi or any old PC — so even if you don’t already have it running, it’s easy to add for this project.</p>
-
+<p>If you’re not already using <a href="https://www.home-assistant.io/">Home Assistant</a>, it’s an open-source smart-home platform that brings all your devices together - TVs, phones, sensors, air conditioners, and much more. You can easily run it on a Raspberry Pi, an old PC, or a virtual machine, so even if this is your first smart-home experiment, you can still install it just for this project</p>
 <h3 id="esphome-config-basics">ESPHome Config Basics</h3>
 
 <p>The scanner runs on <a href="https://esphome.io/"><u>ESPHome</u></a>, which makes connecting hardware like the PN532 reader almost trivial. Instead of writing firmware, you just declare the pins and components in YAML, and ESPHome takes care of the rest.</p>

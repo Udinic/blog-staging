@@ -10,9 +10,9 @@
 				<title>Building CardFlix – A Modern Twist on the Old Movie Shelf</title>
 				<description>&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Watching TV is one of my favorite activities, but I noticed it became too easy for kids (and adults) to fall into the endless loop of short, addictive YouTube videos instead of enjoying a thoughtful episode of a TV series or diving into an adventure movie. I grew tired of seeing my kids glued to the screen to watch some Youtuber doing a ridiculous “Fast-Food Challenge”. I figured that if I’ll make the good content to be more accessible and fun to play - they will do it more often.&lt;/p&gt;
+&lt;p&gt;Watching TV is one of my favorite activities, but I noticed it’s become too easy for kids (and adults) to fall into the endless loop of short, addictive YouTube videos instead of enjoying a thoughtful episode of a TV show or diving into an adventure movie. I got tired of seeing my kids glued to the screen watching yet another YouTuber attempt a ridiculous “Fast-Food Challenge.”&lt;/p&gt;
 
-&lt;p&gt;The solution: Playing content on the TV by scanning “Movie Cards” using NFC. I’m calling this - &lt;strong&gt;CardFlix&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;So I decided to make good content more accessible - and fun to play. The result: watching content on the TV by scanning physical &lt;strong&gt;Movie Cards&lt;/strong&gt; with NFC. I call it &lt;strong&gt;CardFlix&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;media-center&quot;&gt;
 &lt;div class=&quot;embed-container&quot;&gt;
@@ -28,7 +28,7 @@
 
 &lt;p&gt;The scanner runs on &lt;a href=&quot;https://esphome.io/&quot;&gt;&lt;u&gt;ESPHome&lt;/u&gt;&lt;/a&gt; - a framework that makes creating custom smart devices surprisingly simple, and connects to my &lt;a href=&quot;https://www.home-assistant.io/&quot;&gt;&lt;u&gt;Home Assistant&lt;/u&gt;&lt;/a&gt; smart home setup. With my kids’ help, we created &lt;strong&gt;over 50 cards&lt;/strong&gt; covering all their favorite shows and movies, and the collection keeps growing. It was such a hit that I built a second scanner for another room in our house. To make the scanner blend in, I designed and 3D-printed a small enclosure that matches the décor of the room while keeping the scanner kid-friendly and accessible.&lt;/p&gt;
 
-&lt;p&gt;Creating the initial version of this scanner was a fun weekend project. I was able to show my kids the process of bringing an idea to life, in addition to gaining more confidence creating ESPHome projects, which became more useful for other projects that I’ll share soon.&lt;/p&gt;
+&lt;p&gt;Creating the initial version of this scanner was a fun weekend project. I was able to show my kids the process of bringing an idea to life, in addition to me gaining more confidence creating ESPHome projects, which became more useful for other projects that I’ll share soon.&lt;/p&gt;
 
 &lt;h2 id=&quot;building-the-electronics&quot;&gt;Building the electronics&lt;/h2&gt;
 
@@ -63,8 +63,7 @@
 
 &lt;p&gt;With the hardware stacked and soldered, it was ready for the fun part - bringing it to life through ESPHome and tying it into Home Assistant, where we’ll write an automation to make the scanner react to different cards.&lt;/p&gt;
 
-&lt;p&gt;If you’re new to &lt;a href=&quot;https://www.home-assistant.io/&quot;&gt;Home Assistant&lt;/a&gt;, it’s an open-source smart-home system that ties all your devices together. You can set it up in under an hour on a Raspberry Pi or any old PC — so even if you don’t already have it running, it’s easy to add for this project.&lt;/p&gt;
-
+&lt;p&gt;If you’re not already using &lt;a href=&quot;https://www.home-assistant.io/&quot;&gt;Home Assistant&lt;/a&gt;, it’s an open-source smart-home platform that brings all your devices together - TVs, phones, sensors, air conditioners, and much more. You can easily run it on a Raspberry Pi, an old PC, or a virtual machine, so even if this is your first smart-home experiment, you can still install it just for this project&lt;/p&gt;
 &lt;h3 id=&quot;esphome-config-basics&quot;&gt;ESPHome Config Basics&lt;/h3&gt;
 
 &lt;p&gt;The scanner runs on &lt;a href=&quot;https://esphome.io/&quot;&gt;&lt;u&gt;ESPHome&lt;/u&gt;&lt;/a&gt;, which makes connecting hardware like the PN532 reader almost trivial. Instead of writing firmware, you just declare the pins and components in YAML, and ESPHome takes care of the rest.&lt;/p&gt;
