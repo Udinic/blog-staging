@@ -10,11 +10,9 @@
 				<title>Building CardFlix – A Modern Twist on the Old Movie Shelf</title>
 				<description>&lt;p&gt;&lt;a href=&quot;/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg&quot;&gt;&lt;img src=&quot;/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;I was looking for a project that would both get my kids involved in electronics and actually be useful for them. At the same time, I wanted to make TV content more accessible: it’s all too easy for kids (and adults) to fall into the endless loop of short, addictive YouTube videos instead of enjoying a thoughtful episode of a TV series or diving into an adventure movie.&lt;/p&gt;
+&lt;p&gt;Watching TV is one of my favorite activities, but I noticed it became too easy for kids (and adults) to fall into the endless loop of short, addictive YouTube videos instead of enjoying a thoughtful episode of a TV series or diving into an adventure movie. I grew tired of seeing my kids glued to the screen to watch some Youtuber doing a ridiculous “Fast-Food Challenge”. I figured that if I’ll make the good content to be more accessible and fun to play - they will do it more often.&lt;/p&gt;
 
-&lt;p&gt;To make things trickier, a lot of the content they like is spread across different streaming services, or tucked away on my Plex server which can be confusing for kids to navigate on their own.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The solution:&lt;/strong&gt; We built an NFC tag scanner that plays TV shows or movies by tapping a credit-card-sized card.&lt;/p&gt;
+&lt;p&gt;The solution: Playing content on the TV by scanning “Movie Cards” using NFC. I’m calling this - &lt;strong&gt;CardFlix&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;media-center&quot;&gt;
 &lt;div class=&quot;embed-container&quot;&gt;
@@ -25,6 +23,8 @@
 &lt;div class=&quot;video-caption&quot;&gt;
 	CardFlix in action
 &lt;/div&gt;
+
+&lt;p&gt;This project was a great opportunity to involve my kids in electronics, showing them how to make something truly useful by building it together.&lt;/p&gt;
 
 &lt;p&gt;The scanner runs on &lt;a href=&quot;https://esphome.io/&quot;&gt;&lt;u&gt;ESPHome&lt;/u&gt;&lt;/a&gt; - a framework that makes creating custom smart devices surprisingly simple, and connects to my &lt;a href=&quot;https://www.home-assistant.io/&quot;&gt;&lt;u&gt;Home Assistant&lt;/u&gt;&lt;/a&gt; smart home setup. With my kids’ help, we created &lt;strong&gt;over 50 cards&lt;/strong&gt; covering all their favorite shows and movies, and the collection keeps growing. It was such a hit that I built a second scanner for another room in our house. To make the scanner blend in, I designed and 3D-printed a small enclosure that matches the décor of the room while keeping the scanner kid-friendly and accessible.&lt;/p&gt;
 
@@ -158,7 +158,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 
 &lt;p&gt;In the example below, looking up the Tag ID in CARD_MAPPING provided a “netflix_id”, which we used as part of the Netflix Deep Link URL, like this:&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.netflix.com/watch/{{ CARD_MAPPING\[trigger.event.data.tag_id\].netflix_id }}
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.netflix.com/watch/&amp;lt; CARD_MAPPING[trigger.event.data.tag_id].netflix_id &amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;The URL is sent to my Apple TV as a “Play Media” request.&lt;/p&gt;

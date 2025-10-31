@@ -179,11 +179,9 @@
 	  <div class="article_body">
 	  <p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg" /></a></p>
 
-<p>I was looking for a project that would both get my kids involved in electronics and actually be useful for them. At the same time, I wanted to make TV content more accessible: it’s all too easy for kids (and adults) to fall into the endless loop of short, addictive YouTube videos instead of enjoying a thoughtful episode of a TV series or diving into an adventure movie.</p>
+<p>Watching TV is one of my favorite activities, but I noticed it became too easy for kids (and adults) to fall into the endless loop of short, addictive YouTube videos instead of enjoying a thoughtful episode of a TV series or diving into an adventure movie. I grew tired of seeing my kids glued to the screen to watch some Youtuber doing a ridiculous “Fast-Food Challenge”. I figured that if I’ll make the good content to be more accessible and fun to play - they will do it more often.</p>
 
-<p>To make things trickier, a lot of the content they like is spread across different streaming services, or tucked away on my Plex server which can be confusing for kids to navigate on their own.</p>
-
-<p><strong>The solution:</strong> We built an NFC tag scanner that plays TV shows or movies by tapping a credit-card-sized card.</p>
+<p>The solution: Playing content on the TV by scanning “Movie Cards” using NFC. I’m calling this - <strong>CardFlix</strong>.</p>
 
 <div class="media-center">
 <div class="embed-container">
@@ -194,6 +192,8 @@
 <div class="video-caption">
 	CardFlix in action
 </div>
+
+<p>This project was a great opportunity to involve my kids in electronics, showing them how to make something truly useful by building it together.</p>
 
 <p>The scanner runs on <a href="https://esphome.io/"><u>ESPHome</u></a> - a framework that makes creating custom smart devices surprisingly simple, and connects to my <a href="https://www.home-assistant.io/"><u>Home Assistant</u></a> smart home setup. With my kids’ help, we created <strong>over 50 cards</strong> covering all their favorite shows and movies, and the collection keeps growing. It was such a hit that I built a second scanner for another room in our house. To make the scanner blend in, I designed and 3D-printed a small enclosure that matches the décor of the room while keeping the scanner kid-friendly and accessible.</p>
 
@@ -327,7 +327,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 
 <p>In the example below, looking up the Tag ID in CARD_MAPPING provided a “netflix_id”, which we used as part of the Netflix Deep Link URL, like this:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://www.netflix.com/watch/{{ CARD_MAPPING\[trigger.event.data.tag_id\].netflix_id }}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://www.netflix.com/watch/&lt; CARD_MAPPING[trigger.event.data.tag_id].netflix_id &gt;
 </code></pre></div></div>
 
 <p>The URL is sent to my Apple TV as a “Play Media” request.</p>
@@ -578,7 +578,200 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 
 	  </div>
 
+		
+		<ul class="tag_box list-unstyled list-inline">
+		  <li><i class="fa fa-folder-open"></i></li>
 		  
+		  
+			 
+				<li><a href="/categories.html#Home Automation-ref">
+					Home Automation</span>
+					,
+				</a></li>
+			 
+				<li><a href="/categories.html#Electronics-ref">
+					Electronics</span>
+					,
+				</a></li>
+			 
+				<li><a href="/categories.html#3D Printing-ref">
+					3D Printing</span>
+					
+				</a></li>
+			
+		  
+		</ul>
+		  
+		
+		<ul class="tag_box list-inline">
+		  <li><i class="fa fa-tags"></i></li>
+		  
+		  
+			 
+				<li>
+					<a href="/tags.html#electronics-ref">
+					electronics
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#NFC-ref">
+					NFC
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#PN532-ref">
+					PN532
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Wemos D1 Mini-ref">
+					Wemos D1 Mini
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#ESPHome-ref">
+					ESPHome
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Home Assistant-ref">
+					Home Assistant
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Arduino-ref">
+					Arduino
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#ESP32-ref">
+					ESP32
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#ESP8266-ref">
+					ESP8266
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Tag scanner-ref">
+					Tag scanner
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#RFID-ref">
+					RFID
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Plex-ref">
+					Plex
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#TV Shows-ref">
+					TV Shows
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Movies-ref">
+					Movies
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Kids-ref">
+					Kids
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Lamination-ref">
+					Lamination
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#3D Printing-ref">
+					3D Printing
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#i2c-ref">
+					i2c
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#SPI-ref">
+					SPI
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Deep linking-ref">
+					Deep linking
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Hulu-ref">
+					Hulu
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Netflix-ref">
+					Netflix
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#Apple TV-ref">
+					Apple TV
+					
+					</a>
+				</li>
+			
+		  
+		  
+		</ul>
 		  
 
 
