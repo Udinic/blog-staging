@@ -526,6 +526,11 @@ ul.dropdown-menu>li>a>i.fa {
   margin-top: -8px;
 }
 
+.media-center + .image-caption,
+.outer-grid + .image-caption {
+  margin-top: 5px;
+}
+
 .side-by-side + .image-caption {
   margin-top: -15px;
 }

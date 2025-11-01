@@ -422,6 +422,9 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 		&lt;img src=&quot;/assets/images/automating-balcony-shade-with-nfc/intro-circuit.jpg&quot; /&gt; 
 	&lt;/a&gt;
 &lt;/div&gt;
+&lt;div class=&quot;image-caption&quot;&gt;
+	The complete smart shade controller circuit
+&lt;/div&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -431,7 +434,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
   &lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;image-caption&quot;&gt;
+&lt;div class=&quot;video-caption&quot;&gt;
 	Demo of the smart shade controller
 &lt;/div&gt;
 
@@ -514,7 +517,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
   &lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;image-caption&quot;&gt;
+&lt;div class=&quot;video-caption&quot;&gt;
 	Testing the motor
 &lt;/div&gt;
 
@@ -690,7 +693,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
   &lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;image-caption&quot;&gt;
+&lt;div class=&quot;video-caption&quot;&gt;
 	Testing the prototype
 &lt;/div&gt;
 
@@ -912,7 +915,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
   &lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;image-caption&quot;&gt;
+&lt;div class=&quot;video-caption&quot;&gt;
 	Testing the new NFC-based auto-stop mechanism
 &lt;/div&gt;
 
@@ -926,7 +929,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
   &lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;image-caption&quot;&gt;
+&lt;div class=&quot;video-caption&quot;&gt;
 	Testing the shade controller auto-stops when reaching the end.
 &lt;/div&gt;
 
@@ -1143,7 +1146,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
   &lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;image-caption&quot;&gt;
+&lt;div class=&quot;video-caption&quot;&gt;
 	Testing voice command from Google Assistant.
 &lt;/div&gt;
 
@@ -1232,7 +1235,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 		
 			<item>
 				<title>Introducing "Grabag" - a simple way to watch TV.</title>
-				<description>&lt;p&gt;UPDATE (09/2020): While I discontinued working on Grabag, this might still worth the read as the idea still lives on. To this day, I keep seeing this type of product being requested by people.&lt;/p&gt;
+				<description>&lt;p&gt;&lt;em&gt;UPDATE (09/2020): While I discontinued working on Grabag, this might still worth the read as the idea still lives on. To this day, I keep seeing this type of product being requested by people.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;About a year ago, I cut the cords and canceled my cable subscription. I watch a lot of TV shows, but I stream everything anyway, and avoiding all the commercial breaks is a bliss.&lt;/p&gt;
 
@@ -1296,7 +1299,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 			</item>
 		
 			<item>
-				<title>Speed up your app</title>
+				<title>Speed up your app (DroidCon Talk)</title>
 				<description>&lt;p&gt;A few weeks ago, I gave a talk about Android Performance Optimization, at Droidcon NYC.&lt;/p&gt;
 
 &lt;p&gt;I invested a lot of time in this presentation, since I wanted to show real examples for performance issues, and how to identify them with the available tools. I had to cut down about a half of my slides because I didn’t have enough time to show everything. In this post, I’ll summarize everything I was talking about, and show examples I didn’t have time to go over.&lt;/p&gt;
