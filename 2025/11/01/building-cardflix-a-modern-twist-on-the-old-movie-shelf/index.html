@@ -171,13 +171,13 @@
 	<div class="col-sm-10">
 	 <span class="post-date">
 	   
-	   October 
-	   27th,
-	   
+	   November 
+	   1st,
+	     
 	   2025
 	 </span>
 	  <div class="article_body">
-	  <p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg" /></a></p>
+	  <p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image11.jpg" /></a></p>
 
 <p>Watching TV is one of my favorite activities, but I noticed it’s become too easy for kids (and adults) to fall into the endless loop of short, addictive YouTube videos instead of enjoying a thoughtful episode of a TV show or diving into an adventure movie. I got tired of seeing my kids glued to the screen watching yet another YouTuber attempt a ridiculous “Fast-Food Challenge.”</p>
 
@@ -203,7 +203,7 @@
 
 <p>The circuit is straightforward: connecting an NFC reader module (<a href="https://amzn.to/3L6np34"><u>PN532</u></a>) to a microcontroller (<a href="https://amzn.to/43rh8oU"><u>ESP8266</u> <u>WeMos D1 mini</u></a>).</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image6.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image6.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image6.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image6.png" /></a></p>
 <div class="image-caption">
 	Circuit diagram showing the PN532 NFC reader connected to the microcontroller
 </div>
@@ -212,7 +212,7 @@
 
 <p>One critical step to note here: <strong>set the PN532’s mode correctly</strong>. The board has tiny DIP switches to toggle between I²C and SPI. Make sure these match your chosen mode - otherwise you’ll be staring at a non-responsive scanner and wondering why nothing works. Let’s just say I learned that lesson the hard way…</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image10.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image10.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image10.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image10.png" /></a></p>
 <div class="image-caption">
 	Flipping the PN532 mode from SPI to I²C
 </div>
@@ -221,7 +221,7 @@
 
 <p>After confirming the wiring, I soldered everything together. A pair of <em>helping hands</em> was invaluable here - keeping the boards aligned so I could stack them neatly and compactly. That’s important, since they need to fit snugly inside the enclosure, as we’ll see later.</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image17.jpg"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image17.jpg" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image17.jpg"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image17.jpg" /></a></p>
 <div class="image-caption">
 	Soldered electronics stack help by the helping hands
 </div>
@@ -259,14 +259,14 @@
 
 <p>Once the firmware is loaded onto the Wemos D1 mini, Home Assistant automatically detects the device and prompts you to add it as an integration.</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image5.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image5.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image5.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image5.png" /></a></p>
 <div class="image-caption">
 	Home Assistant integration setup screen
 </div>
 
 <p>From there, the scanner can report any NFC tags it detects. Home Assistant has an Event Listening feature under Developer Tools, a quick scan of any card, while listening to “tag_scanned” events, will show some useful data for the card and the tag scanner. <em>tag_id</em> is the card’s unique ID and <em>device_id</em> is the tag scanner’s unique ID.</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image19.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image19.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image19.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image19.png" /></a></p>
 <div class="image-caption">
 	Event Listener showing tag_scanned event data
 </div>
@@ -293,7 +293,7 @@
 <p><strong>1. The automation’s trigger - scanning a card.</strong><br />
 The trigger is a <em>tag_scanned</em> event, the same one we saw earlier when testing the scanner using the Developer Tools. The automation will be triggered when such an event is fired.</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image7.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image7.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image7.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image7.png" /></a></p>
 <div class="image-caption">
 	The Automation's trigger configuration for tag_scanned events
 </div>
@@ -306,7 +306,7 @@ These are the variables the automation uses:</p>
   <li><strong>CARD_MAPPING</strong> - Maps each card’s Tag ID to the content it should play.</li>
 </ul>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image2.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image2.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image2.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image2.png" /></a></p>
 <div class="image-caption">
 	The automation's variables, we'll mostly update CARD_MAPPING with Tag IDs and content IDs
 </div>
@@ -316,7 +316,7 @@ These are the variables the automation uses:</p>
 <p><strong>3. Turning on the TV, if needed</strong><br />
 The TARGET_TV variable holds the TV we’re targeting, we’ll check its status and turn it on if needed.</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image18.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image18.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image18.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image18.png" /></a></p>
 <div class="image-caption">
 	TV power control logic in the automation
 </div>
@@ -333,7 +333,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 
 <p>This URL works on an Apple TV, which is connected to my TV. It’s possible other media devices, such as Smart TVs, would have different requirements to deep link to a specific content.</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image20.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image20.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image20.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image20.png" /></a></p>
 <div class="image-caption">
 	The flow of playing a Netflix content in the automation
 </div>
@@ -399,14 +399,14 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 
 <p>We used <a href="https://fanart.tv/"><u>fanart.tv</u></a> as our main source for high-quality TV and movie artwork. It has a huge collection of posters, logos, and backgrounds that work perfectly for this kind of project. Once we picked the right art, we copied it into a Google Doc and resized it to the dimensions of a credit card (Tip: resize to Width 2.12 inch, Height: 3.36 inch, Ratio: 1.583333). We put a few posters on a single page and printed it.</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image12.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image12.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image12.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image12.png" /></a></p>
 <div class="image-caption">
 	Arranging the movie posters for printing
 </div>
 
 <p>The printed poster we put on top of the card, slipped into a <a href="https://amzn.to/4htrRoL"><u>Laminating Pouch</u></a> and from there straight to the laminating machine. The <a href="https://amzn.to/47kbCad"><u>one I got</u></a> is cheap (under $20) and it served us well in several projects, definitely nice to have around the house.</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image21.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image21.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image21.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image21.png" /></a></p>
 <div class="image-caption">
 	My daughter Emma is showing how we lamindate a movie card
 </div>
@@ -415,14 +415,14 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 
 <p>Once the physical card is ready, the final step is onboarding it into Home Assistant. To make things easier, I’ve added to the automation a fallback in case we scan a card that’s not assigned to any content, which prints the card’s Tag ID to Home Assistant’s Logbook.</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image1.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image1.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image1.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image1.png" /></a></p>
 <div class="image-caption">
 	The "Else" clause of the automation, printing the card's Tag ID to the Logbook
 </div>
 
 <p>This is how the Logbook entry looks like:</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image3.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image3.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image3.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image3.png" /></a></p>
 <div class="image-caption">
 	Home Assistant's Logbook entry detailing the Tag ID of a new card to onboard
 </div>
@@ -444,7 +444,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 
 <p>Instead of designing something from scratch, I started with an existing enclosure I found online and personalized it with a simple logo that ChatGPT helped create. The result was a clean, kid-friendly enclosure with a custom logo that makes it feel like a finished product.</p>
 
-<p><a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image4.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image4.png" /></a></p>
+<p><a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image4.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image4.png" /></a></p>
 <div class="image-caption">
 	Desgining a 3D printed enclosure with a custom CardFlix logo on the BambuLab Slicer
 </div>
@@ -454,10 +454,10 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 <table class="side-by-side">
   <tr>
     <td>
-      <a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image15.jpg"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image15.jpg" /></a>
+      <a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image15.jpg"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image15.jpg" /></a>
     </td>
     <td>
-      <a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image16.jpg"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image16.jpg" /></a>
+      <a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image16.jpg"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image16.jpg" /></a>
     </td>
   </tr>
 </table>
@@ -472,10 +472,10 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 <table class="side-by-side">
   <tr>
     <td>
-      <a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image8.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image8.png" /></a>
+      <a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image8.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image8.png" /></a>
     </td>
     <td>
-      <a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image9.png"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image9.png" /></a>
+      <a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image9.png"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image9.png" /></a>
     </td>
   </tr>
 </table>
@@ -493,10 +493,10 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 <table class="side-by-side">
   <tr>
     <td>
-      <a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image13.jpg"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image13.jpg" /></a>
+      <a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image13.jpg"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image13.jpg" /></a>
     </td>
     <td>
-      <a href="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image14.jpg"><img src="/assets/images/2025-10-27-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image14.jpg" /></a>
+      <a href="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image14.jpg"><img src="/assets/images/2025-11-01-building-cardflix-a-modern-twist-on-the-old-movie-shelf/media/image14.jpg" /></a>
     </td>
   </tr>
 </table>
@@ -810,7 +810,7 @@ Each streaming service has its own Deep Link format. For each content we’ll ch
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'udinic-blog';
-    var disqus_identifier = '/2025/10/27/building-cardflix-a-modern-twist-on-the-old-movie-shelf/';
+    var disqus_identifier = '/2025/11/01/building-cardflix-a-modern-twist-on-the-old-movie-shelf/';
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
